@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 20px;
+            border: 1px solid #b8b4a4;
+            outline: none;
+            font-size: 16px;
+        }
+        input:focus {
+            border-color: #007acc;
+            box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+        }
+        label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            margin: 10px 5%;
+            color: #555;
+        }
+        button {
+            margin: 10px;
+            width: 90%;
+            padding: 12px;
+            background-color: #007acc;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            input, button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Enter your password" required pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$" title="Password must be at least 6 characters, least one number, one special character (!@#$%^&*).">
+            <p>If you don't have an account, <a href="signin.html">sign up</a></p><br>
+            <button type="submit">Login</button>
+        </form>
+        <p id="responseMessage" style="margin-top: 20px; color: red;"></p>
+    </div>
+
+   <script>
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('http://192.168.181.25:3002/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                window.location.href = "dashboard.html";
+            } else {
+                document.getElementById('responseMessage').textContent = data.message;
+                document.getElementById('responseMessage').style.color = 'red';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('responseMessage').textContent = 'An error occurred. Please try again later.';
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice Academy</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header .logo {
+            height: 30px;
+            width: 300px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .dashboard {
+            padding: 20px;
+        }
+
+        .recommendations {
+            background-color: white;
+            width: 60%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .recommendation-cards {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 20px;       
+            justify-content: center;
+        }
+
+        .card {
+            display: flex;
+            width:50%;
+            flex-direction: row;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 20px);
+            max-width: calc(50% - 20px); 
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h3 {
+            color: #002d9c;
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .footer {
+            background-color: #002d9c;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: #D3D3D3;
+        }
+        .header h3{
+            text-transform: capitalize;
+            font-style: italic;
+        }
+        .searchres {
+            display: none;
+            background-color: #fffefc;
+            color: black;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            width: 40%;
+            left:30%;
+            padding: 10px;
+            margin: 10px auto; 
+            font-size: 16px;
+            text-align: left; 
+            position: absolute;
+            z-index: 10;
+            display: flex; 
+            align-items: center;
+            gap: 10px;
+        }
+
+        .searchres img {
+            width: 50px; 
+            height: 50px; 
+            flex-shrink: 0;
+        }
+
+        .searchres p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="mainlogo.png" alt="Choice Academy Logo" class="logo">
+        <h3 id="username">Welcome, Guest</h3>
+        <h1>What will you learn today?</h1>
+        <input type="search" placeholder="Search learning" id="search" class="search-bar">
+        <div id="searchResults" class="searchres"></div>
+    </header>
+    <main class="dashboard">
+        <section class="recommendations">
+            <h2>Recommendations</h2>
+            <div class="recommendation-cards">
+                <div class="card" onclick="window.location.href='learning.html';">
+                    <img src="learning.png" alt="Learning Icon">
+                    <div class="card-content">
+                        <h3>Learning</h3>
+                        <p>Personalized learning recommendations based on your interests and other profile attributes.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='digital_credentials.html';">
+                    <img src="https://cdn-icons-png.flaticon.com/512/78/78637.png" alt="Digital Credentials Icon">
+                    <div class="card-content">
+                        <h3>Digital Credentials</h3>
+                        <p>Personalized digital credentials recommendations based on your interests and other profile attributes.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='Catlog.html';">
+                    <img src="Target.png" alt="Course Catalog Icon">
+                    <div class="card-content">
+                        <h3>Course Catalog</h3>
+                        <p>Not sure where to begin? Explore featured learning and popular subjects in our Course Catalog.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='Resources.html';">
+                    <img src="programming.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Programs & Resources</h3>
+                        <p>Additional learning resources such as learning academies, universities, and learning sites.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='editcourse.html';">
+                    <img src="edit.png" alt="Edit icon">
+                    <div class="card-content">
+                        <h3>Edit courses</h3>
+                        <p>Admin Can Able to add or delete Courses that where offered.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('searchResults').style.display = 'none';
+    });
+    const courses = [
+        { name: "Data Structures and Algorithms", keywords: ["data structures", "data structure and algorithms"], image: "dsa.png" },
+        { name: "Artificial Intelligence & Machine Learning", keywords: ["aiml", "artificial intelligence", "machine learning"], image: "aiml.png" },
+        { name: "Cloud Computting", keywords: ["cc", "cloud","cloud computing"], image: "cloud.png" },
+        { name: "Graduate Aptitude Test In Engineering", keywords: ["gate", "graduate","graduate aptitude test in engineering"], image: "gate.png" }
+    ];
+
+    document.getElementById('search').addEventListener('input', function () {
+        const searchValue = this.value.trim().toLowerCase();
+        const searchResults = document.getElementById('searchResults');
+        searchResults.innerHTML = '';
+
+        if (searchValue) {
+            const filteredCourses = courses.filter(course => 
+                course.keywords.some(keyword => keyword.includes(searchValue))
+            );
+
+            if (filteredCourses.length > 0) {
+                searchResults.style.display = 'block';
+                filteredCourses.forEach(course => {
+                    const item = document.createElement('div');
+                    item.classList.add('search-result-item');
+                    item.innerHTML = `<img src="${course.image}" alt="${course.name}"><p>${course.name}</p><hr>`;
+                    item.onclick = () => alert(`Navigating to ${course.name}`);
+                    searchResults.appendChild(item);
+                });
+            } else {
+                searchResults.style.display = 'none';
+            }
+        } else {
+            searchResults.style.display = 'none';
+        }
+    });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const usernameElement = document.getElementById("username");
+    const userEmail = localStorage.getItem("userEmail");
+    if (!userEmail) {
+        usernameElement.innerText = "Welcome, Guest";
+        return;
+    }
+    fetch("http://localhost:3002/getUser", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: userEmail })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            usernameElement.innerText = `Welcome, ${data.name}`;
+        } else {
+            usernameElement.innerText = "Welcome, Guest";
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching user:", error);
+        usernameElement.innerText = "Welcome, Guest";
+    });
+});
+</script>
+</html>

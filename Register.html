@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: black;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #b8b4a4;
+            outline: none;
+            font-size: 16px;
+        }
+        input:focus, select:focus {
+            border-color: #007acc;
+            box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007acc;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            input, select, button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Register</h2>
+        
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+            </div>
+
+            <div class="form-group">
+                <label for="rollno">Roll No:</label>
+                <input type="text" id="rollno">
+            </div>
+
+            <div class="form-group">
+                <label for="cgpa">CGPA:</label>
+                <input type="number" id="cgpa">
+            </div>
+
+            <div class="form-group">
+                <label for="year">Year of Study:</label>
+                <select id="year">
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="branch">Branch:</label>
+                <select id="branch" onchange="updateElectives()">
+                    <option value="CSE">Computer Science</option>
+                    <option value="ECE">Electronics</option>
+                    <option value="ME">Mechanical</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="semester">Semester:</label>
+                <select id="semester" onchange="updateElectives()">
+                    <option value="5th">5th Semester</option>
+                    <option value="6th">6th Semester</option>
+                    <option value="7th">7th Semester</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="elective">Open Elective:</label>
+                <select id="elective"></select>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    fetchUserDetails();
+    updateElectives();
+    document.getElementById("registerForm").addEventListener("submit", submitForm);
+});
+
+async function fetchUserDetails() {
+    const userEmail = "user@example.com"; 
+    try {
+        const response = await fetch(`http://localhost:3002/getUserDetails?email=${userEmail}`);
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById("name").value = data.user.name;
+            document.getElementById("email").value = data.user.email;
+            document.getElementById("rollno").value = data.user.roll_no;
+            document.getElementById("cgpa").value = data.user.cgpa;
+            document.getElementById("year").value = data.user.year_of_study;
+        } else {
+            alert("User details could not be loaded.");
+        }
+    } catch (error) {
+        console.error("Error fetching user details:", error);
+    }
+}
+
+function updateElectives() {
+    const branch = document.getElementById("branch").value;
+    const semester = document.getElementById("semester").value;
+    const electiveSelect = document.getElementById("elective");
+
+    const electives = {
+        "CSE": {
+            "5th": ["Building Technology", "Electric Vehicles", "3D Printing Technology", "MATLAB Programming for Engineers", "Introduction to Control Systems", "Computer Applications in Food Processing", "Optimization Techniques", "Materials Characterization Techniques", "Chemistry of Energy Materials"],
+            "6th": ["Environmental Economics", "Smart Electric Grid", "Introduction to Robotics", "Signal Processing", "Basic VLSI Design", "Food Refrigeration and Cold Chain Management", "Wavelet transforms and its applications", "Physics of Electronic Materials and Devices", "Chemistry of Polymers and its applications"],
+            "7th": ["Blockchain", "IoT"]
+        },
+        "ECE": {
+            "5th": ["VLSI", "Embedded Systems"],
+            "6th": ["Wireless Communication", "Signal Processing"],
+            "7th": ["Robotics", "Antenna Design"]
+        },
+        "ME": {
+            "5th": ["Thermodynamics", "Fluid Mechanics"],
+            "6th": ["Automobile Engineering", "Manufacturing"],
+            "7th": ["Mechatronics", "HVAC"]
+        }
+    };
+
+    electiveSelect.innerHTML = "";
+
+    if (electives[branch] && electives[branch][semester]) {
+        electives[branch][semester].forEach(course => {
+            let option = document.createElement("option");
+            option.value = course;
+            option.textContent = course;
+            electiveSelect.appendChild(option);
+        });
+    }
+}
+
+async function submitForm(event) {
+    event.preventDefault();
+    const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        rollno: document.getElementById("rollno").value,
+        cgpa: document.getElementById("cgpa").value,
+        year: document.getElementById("year").value,
+        branch: document.getElementById("branch").value,
+        semester: document.getElementById("semester").value,
+        elective: document.getElementById("elective").value
+    };
+
+    try {
+        const response = await fetch("http://192.168.181.25:3002/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+        const result = await response.json();
+
+        if (result.success) {
+            alert("Registration successful!");
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Registration failed: " + result.message);
+        }
+    } catch (error) {
+        console.error("Error submitting form:", error);
+    }
+}
+
+    </script>
+
+</body>
+</html>

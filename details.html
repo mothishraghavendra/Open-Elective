@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>User Details</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Roll No</th>
+                <th>CGPA</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody">
+            <!-- User data will be inserted here dynamically -->
+        </tbody>
+    </table>
+    
+    <script>
+        async function fetchUsers() {
+            const response = await fetch('http://localhost:3002/getUsers');
+            const users = await response.json();
+            const tableBody = document.getElementById('userTableBody');
+            tableBody.innerHTML = '';
+            
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td><input type="text" value="${user.name}" id="name-${user.id}"></td>
+                    <td>${user.email}</td>
+                    <td><input type="text" value="${user.roll_no}" id="roll-${user.id}"></td>
+                    <td><input type="number" step="0.01" value="${user.cgpa}" id="cgpa-${user.id}"></td>
+                    <td><button onclick="updateUser(${user.id})">Update</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        async function updateUser(id) {
+            const name = document.getElementById(`name-${id}`).value;
+            const roll_no = document.getElementById(`roll-${id}`).value;
+            const cgpa = document.getElementById(`cgpa-${id}`).value;
+            
+            const response = await fetch('http://localhost:3002/updateUser', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, name, roll_no, cgpa })
+            });
+            
+            const result = await response.json();
+            alert(result.message);
+            fetchUsers();
+        }
+        
+        document.addEventListener('DOMContentLoaded', fetchUsers);
+    </script>
+</body>
+</html>

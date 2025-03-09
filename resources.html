@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice Academy</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .header .logo {
+            height: 30px;
+            width: 300px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .dashboard {
+            padding: 20px;
+        }
+
+        .recommendations{
+            background-color: white;
+            width: 95%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .recommendation-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            width: calc(25% - 20px); 
+            flex: 1 1 calc(25% - 20px);
+            max-width: calc(25% - 20px); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            cursor: pointer;
+            user-select: none;
+        }
+        .card img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h3 {
+            color: #002d9c;
+            font-size: 18px;
+            margin: 0 0 10px;
+            text-align: center;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            text-align: center;
+            color: #555;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .footer {
+            background-color: #002d9c;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .card:hover{
+            transform: scale(1.05);
+            background-color: #D3D3D3;
+        }
+         @media (max-width: 768px) {
+            .card {
+                width: calc(100% - 20px);
+                max-width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h2>Programming & Resources</h1>
+    </header>
+    <main class="dashboard">
+        <section class="recommendations">
+            <h2>Resources</h2>
+            <div class="recommendation-cards">
+                <div class="card"onclick="window.location.href='Unacadamy.html';">
+                    <img src="unac.png" alt="Learning Icon">
+                    <div class="card-content">
+                        <p>Resources</p>
+                        <h3>Unacadamy</h3>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='tb.html';">
+                    <img src="Tb.png" alt="Digital Credentials Icon">
+                    <div class="card-content">
+                        <p>Resources</p>
+                        <h3>Text Books</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

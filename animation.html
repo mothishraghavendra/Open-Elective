@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Checkmark Animation</title>
+    <style>
+        .checkmark-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .checkmark {
+            width: 100px;
+            height: 100px;
+        }
+
+        .checkmark path {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: draw 0.5s ease-out forwards;
+        }
+
+        @keyframes draw {
+            from {
+                stroke-dashoffset: 100;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="checkmark-container">
+    <svg class="checkmark hidden" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="green" stroke-width="5" fill="none"/>
+        <path d="M30 50 L45 65 L70 35" stroke="green" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</div>
+
+<script>
+    function showCheckmark() {
+        const checkmark = document.querySelector('.checkmark');
+        checkmark.classList.remove('hidden');
+    }
+
+    // Example usage: Trigger on form submission success
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("registerForm").addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent actual form submission for testing
+            showCheckmark(); // Show the animation
+        });
+    });
+</script>
+
+</body>
+</html>

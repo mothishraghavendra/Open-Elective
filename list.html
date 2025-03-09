@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.typekit.net/ksi0xpe.css">
+    <title>Open Elective Courses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 5px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            font-family: "waters-titling-pro", sans-serif;
+            font-style: normal;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+    @media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    ul {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 0;
+        border-radius: 0;
+    }
+
+    li {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-section {
+        max-width: 100%;
+    }
+
+    .image-section img {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    table {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Your Branch & Semester</h2>
+    
+    <label for="branch">Branch:</label>
+    <select id="branch">
+        <option value="">-- Select Branch --</option>
+        <option value="CSE">Computer Science & Engineering</option>
+        <option value="ECE">Electronics & Communication</option>
+        <option value="ME">Mechanical Engineering</option>
+        <option value="EE">Electrical Engineering</option>
+    </select>
+
+    <label for="semester">Semester:</label>
+    <select id="semester">
+        <option value="">-- Select Semester --</option>
+        <option value="5">5th Semester</option>
+        <option value="6">6th Semester</option>
+        <option value="7">7th Semester</option>
+    </select>
+
+    <button onclick="fetchCourses()">Show Open Electives</button>
+
+    <div id="tablesContainer"></div>
+</div>
+
+<script>
+    const coursesData = {
+        "CSE": {
+            "5": [
+                { "code": "20A01505", "name": "Building Technology", "department": "CE" },
+                { "code": "20A02505", "name": "Electric Vehicles",   "department": "EEE" },
+                { "code": "20A03505", "name": "3D Printing Technology",   "department": "ME" },
+                { "code": "20A04507", "name": "MATLAB Programming for Engineers",   "department": "ECE/EEE" },
+                { "code": "20A04508", "name": "Introduction to Control Systems",   "department": "ECE/EEE" },
+                { "code": "20A27505", "name": "Computer Applications in Food Processing",   "department": "FT" },
+                { "code": "20A54501", "name": "Optimization Techniques",   "department": "Mathematics" },
+                { "code": "20A56501", "name": "Materials Characterization Techniques",   "department": "Physics" },
+                { "code": "20A51501", "name": "Chemistry of Energy Materials",   "department": "Chemistry" }
+            ],
+            "6": [
+                { "code": "20A01605", "name": "Environmental Economics",   "department": "CE" },
+                { "code": "20A02605", "name": "Smart Electric Grid",   "department": "EEE" },
+                { "code": "20A03605", "name": "Introduction to Robotics",   "department": "ME" },
+                { "code": "20A04605", "name": "Signal Processing",   "department": "ECE" },
+                { "code": "20A04606", "name": "Basic VLSI Design",   "department": "ECE" },
+                { "code": "20A27605", "name": "Food Refrigeration and Cold Chain Management",   "department": "FT" },
+                { "code": "20A54701", "name": "Wavelet Transforms & its applications",   "department": "Mathematics" },
+                { "code": "20A56701", "name": "Physics Of Electronic Materials and Devices",   "department": "Physics" },
+                { "code": "20A51701", "name": "Chemistry of Polymers and its Applications",   "department": "Chemistry" }
+            ],
+            "7": {
+                "set1": [
+                    { "code": "20A01704", "name": "Cost Effective Housing Techniques",   "department": "CE" },
+                    { "code": "20A02704", "name": "IOT Applications in Electrical Engineering",   "department": "EEE" },
+                    { "code": "20A03704", "name": "Product Design & Development",   "department": "ME" },
+                    { "code": "20A04704", "name": "Electronic Sensors",   "department": "ECE" },
+                    { "code": "20A04506", "name": "Principles of Communication Systems",   "department": "ECE" },
+                    { "code": "20A27704", "name": "Human Nutrition",   "department": "FT" },
+                    { "code": "20A54702", "name": "Numerical Methods for Engineers",   "department": "Mathematics" },
+                    { "code": "20A56702", "name": "Sensors And Actuators for Engineering Applications",   "department": "Physics" },
+                    { "code": "20A51702", "name": "Chemistry of Nanomaterials and Applications",   "department": "Chemistry" }
+                ],
+                "set2": [
+                    { "code": "20A01705", "name": "Health, Safety & Environmental Management",   "department": "CE" },
+                    { "code": "20A02705", "name": "Renewable Energy Systems",   "department": "EEE" },
+                    { "code": "20A03705", "name": "Introduction to Composite Materials",   "department": "ME" },
+                    { "code": "20A04705", "name": "Microcontrollers and Applications",   "department": "ECE" },
+                    { "code": "20A04706", "name": "Principles of Cellular & Mobile Communications",   "department": "ECE" },
+                    { "code": "20A27705", "name": "Waste and Effluent Management",   "department": "FT" },
+                    { "code": "20A54703", "name": "Number theory & its applications",   "department": "Mathematics" },
+                    { "code": "20A56703", "name": "Smart Materials and Devices",   "department": "Physics" },
+                    { "code": "20A51703", "name": "Green Chemistry and Catalysis for Sustainable Environment",   "department": "Chemistry" }
+                ]
+            }
+        },
+        "ECE": {
+            "5":[
+                    { "code": "20A01505", "name": "Building Technology", "department": "CE" },
+                    { "code": "20A02505", "name": "Electric Vehicles", "department": "EEE" },
+                    { "code": "20A03505", "name": "3D Printing Technology", "department": "ME" },
+                    { "code": "20A05505a", "name": "Java Programming", "department": "CSE & Allied/IT" },
+                    { "code": "20A05502T", "name": "Artificial Intelligence", "department": "CSE & Allied/IT" },
+                    { "code": "20A12502", "name": "Mobile Application Development using Android", "department": "CSE & Allied/IT" },
+                    { "code": "20A27505", "name": "Computer Applications in Food Processing", "department": "FT" },
+                    { "code": "20A54501", "name": "Optimization Techniques", "department": "Mathematics" },
+                    { "code": "20A56501", "name": "Materials Characterization Techniques", "department": "Physics" },
+                    { "code": "20A51501", "name": "Chemistry of Energy Materials", "department": "Chemistry" }
+                ],
+            "6":[
+                    { "code": "20A01605", "name": "Environmental Economics", "department": "CE" },
+                    { "code": "20A02605", "name": "Smart Electric Grid", "department": "EEE" },
+                    { "code": "20A03605", "name": "Introduction to Robotics", "department": "ME" },
+                    { "code": "20A05605a", "name": "Principles of Operating Systems", "department": "CSE & Allied/IT" },
+                    { "code": "20A05605b", "name": "Foundations of Machine Learning", "department": "CSE & Allied/IT" },
+                    { "code": "20A05605c", "name": "Data Analytics Using R", "department": "CSE & Allied/IT" },
+                    { "code": "20A27605", "name": "Food Refrigeration and Cold Chain Management", "department": "FT" },
+                    { "code": "20A54701", "name": "Wavelet Transforms & its applications", "department": "Mathematics" },
+                    { "code": "20A56701", "name": "Physics Of Electronic Materials and Devices", "department": "Physics" },
+                    { "code": "20A51701", "name": "Chemistry of Polymers and its Applications", "department": "Chemistry" }
+                ],
+
+            "7": {
+                "set1": [
+                    { "code": "20A01704", "name": "Cost Effective Housing Techniques", "department": "CE" },
+                    { "code": "20A02704", "name": "IOT Applications in Electrical Engineering", "department": "EEE" },
+                    { "code": "20A03704", "name": "Product Design & Development", "department": "ME" },
+                    { "code": "20A05704a", "name": "Web Technologies", "department": "CSE & Allied/IT" },
+                    { "code": "20A05704b", "name": "VR & AR for Engineers", "department": "CSE & Allied/IT" },
+                    { "code": "20A05704c", "name": "Software Engineering", "department": "CSE & Allied/IT" },
+                    { "code": "20A27704", "name": "Human Nutrition", "department": "FT" },
+                    { "code": "20A54702", "name": "Numerical Methods for Engineers", "department": "Mathematics" },
+                    { "code": "20A56702", "name": "Sensors And Actuators for Engineering Applications", "department": "Physics" },
+                    { "code": "20A51702", "name": "Chemistry of Nanomaterials and Applications", "department": "Chemistry" }
+                ],
+
+                "set2": [
+                    { "code": "20A01705", "name": "Health, Safety & Environmental Management", "department": "CE" },
+                    { "code": "20A02705", "name": "Renewable Energy Systems", "department": "EEE" },
+                    { "code": "20A03705", "name": "Introduction to Composite Materials", "department": "ME" },
+                    { "code": "20A05705a", "name": "Cyber Security", "department": "CSE & Allied/IT" },
+                    { "code": "20A05705b", "name": "Introduction to Full Stack Development", "department": "CSE & Allied/IT" },
+                    { "code": "20A27705", "name": "Waste and Effluent Management", "department": "FT" },
+                    { "code": "20A54703", "name": "Number Theory & its applications", "department": "Mathematics" },
+                    { "code": "20A56703", "name": "Smart Materials and Devices", "department": "Physics" },
+                    { "code": "20A51703", "name": "Green Chemistry and Catalysis for Sustainable Environment", "department": "Chemistry" }
+                ]
+            }
+        },
+        "ME": {
+            "3": [
+                { code: "OE321", name: "Automobile Engineering", credits: 3 },
+                { code: "OE322", name: "Manufacturing Processes", credits: 3 }
+            ],
+            "5": [
+                { code: "OE521", name: "Renewable Energy", credits: 3 },
+                { code: "OE522", name: "Aerodynamics", credits: 3 }
+            ],
+            "7": {
+                "set1": [
+                    { code: "OE721", name: "3D Printing", credits: 3 },
+                    { code: "OE722", name: "Smart Materials", credits: 3 }
+                ],
+                "set2": [
+                    { code: "OE723", name: "Advanced Manufacturing", credits: 3 },
+                    { code: "OE724", name: "Composite Materials", credits: 3 }
+                ]
+            }
+        },
+        "EE": {
+            "3": [
+                { code: "OE331", name: "Power Electronics", credits: 3 },
+                { code: "OE332", name: "Electrical Machines", credits: 3 }
+            ],
+            "5": [
+                { code: "OE531", name: "Smart Grid Technology", credits: 3 },
+                { code: "OE532", name: "Control Systems", credits: 3 }
+            ],
+            "7": {
+                "set1": [
+                    { code: "OE731", name: "Renewable Energy Systems", credits: 3 },
+                    { code: "OE732", name: "High Voltage Engineering", credits: 3 }
+                ],
+                "set2": [
+                    { code: "OE733", name: "Power System Analysis", credits: 3 },
+                    { code: "OE734", name: "Advanced Control Systems", credits: 3 }
+                ]
+            }
+        }
+    };
+
+    function fetchCourses() {
+        const branch = document.getElementById("branch").value;
+        const semester = document.getElementById("semester").value;
+        const tablesContainer = document.getElementById("tablesContainer");
+
+        tablesContainer.innerHTML = "";
+
+        if (!branch || !semester) {
+            alert("Please select both branch and semester!");
+            return;
+        }
+
+        const selectedCourses = coursesData[branch][semester] || [];
+        
+        if (selectedCourses.length === 0 && semester !== "7") {
+            alert("No courses found for this selection.");
+            return;
+        }
+
+        if (semester === "7") {
+            const set1 = selectedCourses.set1 || [];
+            const set2 = selectedCourses.set2 || [];
+
+            if (set1.length > 0) {
+                const table1 = createTable(set1, "Open Electives Set 1");
+                tablesContainer.appendChild(table1);
+            }
+
+            if (set2.length > 0) {
+                const table2 = createTable(set2, "Open Electives Set 2");
+                tablesContainer.appendChild(table2);
+            }
+        } else {
+            const table = createTable(selectedCourses, "Open Electives");
+            tablesContainer.appendChild(table);
+        }
+    }
+
+    function createTable(courses, title) {
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+
+        const headerRow = document.createElement("tr");
+        const header1 = document.createElement("th");
+        header1.textContent = "Course Code";
+        const header2 = document.createElement("th");
+        header2.textContent = "Course Name";
+        const header3 = document.createElement("th");
+        header3.textContent = "Department";
+
+        headerRow.appendChild(header1);
+        headerRow.appendChild(header2);
+        headerRow.appendChild(header3);
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        courses.forEach(course => {
+            const row = document.createElement("tr");
+            const cell1 = document.createElement("td");
+            cell1.textContent = course.code;
+            const cell2 = document.createElement("td");
+            cell2.textContent = course.name;
+            const cell3 = document.createElement("td");
+            cell3.textContent = course.department;
+
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            row.appendChild(cell3);
+            tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+
+        const tableTitle = document.createElement("h3");
+        tableTitle.textContent = title;
+        tablesContainer.appendChild(tableTitle);
+        tablesContainer.appendChild(table);
+
+        return table;
+    }
+</script>
+
+</body>
+</html>

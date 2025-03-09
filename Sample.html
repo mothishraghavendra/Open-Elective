@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+    <title>JNTUA CEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="jntu.png">
+    <style>
+        header {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+        }
+        .Main {
+            text-align: center;
+        }
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+        h2 {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        ul {
+            background-color: #0096ff;
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            color: white;
+            border-radius: 20px;
+            padding: 0;
+        }
+        li {
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        li a {
+            color: white;
+            text-decoration: none;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+                .recommendations {
+            background-color: white;
+            width: 60%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .recommendation-cards {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 20px;       
+            justify-content: center;
+        }
+
+        .card {
+            display: flex;
+            width:50%;
+            flex-direction: row;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 20px);
+            max-width: calc(50% - 20px); 
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h3 {
+            color: #002d9c;
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .footer {
+            background-color: #002d9c;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: #D3D3D3;
+        }
+        .header h3{
+            text-transform: capitalize;
+            font-style: italic;
+        }
+        .dashboard {
+            padding: 20px;
+        }
+    </style>
+    <script>
+        function loadSBI() {
+            const iframe = document.getElementById('sbiFrame');
+            iframe.classList.remove('hidden');
+            iframe.src = "https://www.onlinesbi.sbi/sbicollect/";
+        }
+	function loadMyProfile(){
+		const iframe = document.getElementById('ProfileFrame');
+		iframe.classList.remove('hidden');
+		iframe.src= "Myprofile.html";
+	}
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://www.jntuacea.ac.in/images/jntuaceatp.png" alt="JNTU logo">
+        </div>
+        <div class="Main">
+            <h2>JAWAHARLAL NEHURU TECHNOLOGICAL UNIVERSITY ANANTAPUR</h2>
+            <p>Sir Mokshagundam Vishveshwariah Road, Ananthapuramu, Andhra Pradesh-515002, INDIA<br>An ISO 9001:2015 Certified Institution</p>
+
+        </div>
+        <div class="logo">
+            <img src="https://www.jntuacea.ac.in/images/JNTUANAACA.png" alt="Nac A">
+        </div>
+    </header>
+    <ul>
+        <li></li>
+        <li></li>
+        <li onclick="loadSBI()">List of courses</li>
+    </ul>
+    <main class="dashboard">
+        <section class="recommendations">
+            <h2>Dashboard</h2>
+            <div class="recommendation-cards">
+                <div class="card" onclick="window.location.href='learning.html';">
+                    <img src="learning.png" alt="Learning Icon">
+                    <div class="card-content">
+                        <h3>Learning</h3>
+                        <p>Personalized learning recommendations based on your interests and other profile attributes.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='Catlog.html';">
+                    <img src="Target.png" alt="Course Catalog Icon">
+                    <div class="card-content">
+                        <h3>Course Catalog</h3>
+                        <p>Not sure where to begin? Explore featured learning and popular subjects in our Course Catalog.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='Resources.html';">
+                    <img src="https://static.thenounproject.com/png/41336-200.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Resources</h3>
+                        <p>Additional learning resources such as learning academies, universities, and learning sites.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="window.location.href='Resources.html';">
+                    <img src="addcourse.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>New Regestry</h3>
+                        <p>Register to new Open elective course</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

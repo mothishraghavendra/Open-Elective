@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JNTUA CEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="jntu.png">
+    <link rel="stylesheet" href="https://use.typekit.net/ksi0xpe.css">
+    <style>
+        header {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+        }
+        .Main h2{
+            
+            font-family: "waters-titling-pro", sans-serif;
+            font-weight: bold;
+            text-align: center;
+        }
+        .Main p{
+            text-align: center;
+        }
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+        h2 {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        ul {
+            background-color: #0096ff;
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            color: white;
+            border-radius: 20px;
+            padding: 0;
+        }
+        li {
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .text-section {
+            max-width: 60%;
+        }
+        .text-section h1 {
+            color: #007acc;
+            font-size: 28px;
+        }
+        .text-section p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .image-section img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .explore-button {
+            background-color: #007acc;
+            color: #ffffff;
+            font-size: 18px;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .explore-button:hover {
+            background-color: #005fa3;
+        }
+        table {
+            width: 95%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    @media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    #Nacc{
+        display: none;
+    }
+    #Add{
+        display: none;
+    }
+    .logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    ul {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 0;
+        border-radius: 0;
+    }
+
+    li {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-section {
+        max-width: 100%;
+    }
+
+    .image-section img {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    table {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://www.jntuacea.ac.in/images/jntuaceatp.png" alt="JNTU logo">
+        </div>
+        <div class="Main">
+            <h2>JAWAHARLAL NEHRU TECHNOLOGICAL UNIVERSITY ANANTAPUR</h2>
+            <p id="Add">Sir Mokshagundam Vishveshwariah Road, Ananthapuramu, Andhra Pradesh-515002, INDIA<br>An ISO 9001:2015 Certified Institution</p>
+        </div>
+        <div class="logo"id="Nacc">
+            <img src="https://www.jntuacea.ac.in/images/JNTUANAACA.png" alt="NAC A">
+        </div>
+    </header>
+    <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signin.html">Signin</a></li>
+    </ul>
+    <div class="container">
+        <div class="content">
+            <div class="text-section">
+                <h1>What is an Open Elective?</h1>
+                <p>Open Electives are courses that allow students to explore subjects beyond their core curriculum. These courses help in broadening knowledge, developing new skills, and enhancing career prospects.</p>
+                <p>At JNTUA, students can choose from a variety of open electives spanning different domains such as Engineering, Management, Humanities, and Science.</p>
+                <a href="#couse" class="explore-button">Explore Electives</a>
+            </div>
+            <div class="image-section">
+                <img src="https://img.freepik.com/free-vector/online-certification-concept_23-2148573637.jpg" alt="Open Elective Illustration">
+            </div>
+        </div>
+    </div>
+        <table>
+        <tr><th>S.No.</th><th>Course Code</th><th>Course Name</th><th>Offered by the Dept.</th></tr>
+        <tr><td>1</td><td>20A01505</td><td>Building Technology</td><td>CE</td></tr>
+        <tr><td>2</td><td>20A02505</td><td>Electric Vehicles</td><td>EEE</td></tr>
+        <tr><td>3</td><td>20A03505</td><td>3D Printing Technology</td><td>ME</td></tr>
+        <tr><td>4</td><td>20A04507</td><td>MATLAB Programming for Engineers</td><td>ECE/EEE</td></tr>
+        <tr><td>5</td><td>20A04508</td><td>Introduction to Control Systems</td><td>ECE/EEE</td></tr>
+        <tr><td>6</td><td>20A27505</td><td>Computer Applications in Food Processing</td><td>FT</td></tr>
+        <tr><td>7</td><td>20A54501</td><td>Optimization Techniques</td><td>Mathematics</td></tr>
+        <tr><td>8</td><td>20A56501</td><td>Materials Characterization Techniques</td><td>Physics</td></tr>
+        <tr><td>9</td><td>20A51501</td><td>Chemistry of Energy Materials</td><td>Chemistry</td></tr>
+    </table>
+    <br><br>
+    <table>
+        <tr><th>S.No.</th><th>Course Code</th><th>Course Name</th><th>Offered by the Dept.</th></tr>
+        <tr><td>1</td><td>20A01704</td><td>Cost Effective Housing Techniques</td><td>CE</td></tr>
+        <tr><td>2</td><td>20A02704</td><td>IoT Applications in Electrical Engineering</td><td>EEE</td></tr>
+        <tr><td>3</td><td>20A03704</td><td>Product Design & Development</td><td>ME</td></tr>
+        <tr><td>4</td><td>20A04704</td><td>Electronic Sensors</td><td>ECE</td></tr>
+        <tr><td>5</td><td>20A04506</td><td>Principles of Communication Systems</td><td>ECE</td></tr>
+        <tr><td>6</td><td>20A27704</td><td>Human Nutrition</td><td>FT</td></tr>
+        <tr><td>7</td><td>20A54702</td><td>Numerical Methods for Engineers</td><td>Mathematics</td></tr>
+        <tr><td>8</td><td>20A56702</td><td>Sensors and Actuators for Engineering Applications</td><td>Physics</td></tr>
+        <tr><td>9</td><td>20A51702</td><td>Chemistry of Nanomaterials and Applications</td><td>Chemistry</td></tr>
+    </table>
+    <br><br>
+    <table>
+        <tr><th>S.No.</th><th>Course Code</th><th>Course Name</th><th>Offered by the Dept.</th></tr>
+        <tr><td>1</td><td>20A01705</td><td>Health, Safety & Environmental Management</td><td>CE</td></tr>
+        <tr><td>2</td><td>20A02705</td><td>Renewable Energy Systems</td><td>EEE</td></tr>
+        <tr><td>3</td><td>20A03705</td><td>Introduction to Composite Materials</td><td>ME</td></tr>
+        <tr><td>4</td><td>20A04705</td><td>Microcontrollers and Applications</td><td>ECE</td></tr>
+        <tr><td>5</td><td>20A04706</td><td>Principles of Cellular & Mobile Communications</td><td>ECE</td></tr>
+        <tr><td>6</td><td>20A27705</td><td>Waste and Effluent Management</td><td>FT</td></tr>
+        <tr><td>7</td><td>20A54703</td><td>Number Theory & Its Applications</td><td>Mathematics</td></tr>
+        <tr><td>8</td><td>20A56703</td><td>Smart Materials and Devices</td><td>Physics</td></tr>
+        <tr><td>9</td><td>20A51703</td><td>Green Chemistry and Catalysis for Sustainable Environment</td><td>Chemistry</td></tr>
+    </table>
+</body>
+</html>

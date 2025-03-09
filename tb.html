@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Books</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .header .logo {
+            height: 30px;
+            width: 300px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .dashboard {
+            padding: 20px;
+        }
+
+        .recommendations {
+            background-color: white;
+            width: 95%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .recommendation-cards {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .card {
+            width: calc(30% - 20px); 
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .card img {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h3 {
+            color: #002d9c;
+            font-size: 16px;
+            margin: 0 0 5px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .footer {
+            background-color: #002d9c;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: #D3D3D3;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(100% - 20px);
+                max-width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <br><br>
+        <h2>Programming & Resources</h2>
+    </header>
+    <main class="dashboard">
+        <section class="recommendations">
+            <h2>Text Books</h2>
+            <div class="recommendation-cards">
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1m3ZU6TnbtfAg01km9at7vs0A9xbtw8km/preview';">
+                    <img src="pdf1.png" alt="Learning Icon">
+                    <div class="card-content">
+                        <h3>DBMS</h3>
+                        <p>F. Korth and S. Sudarshan</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1XRCTD1B8YsPJJO6NEtrTxkjoskSiYq6t/preview';">
+                    <img src="pdf1.png" alt="Digital Credentials Icon">
+                    <div class="card-content">
+                        <h3>DBMS</h3>
+                        <p>Raghu Ramakrishnan</p>
+                    </div>
+                </div>
+                <div class="card"class="card"onclick="window.location.href='https://drive.google.com/file/d/1VbWnxnwIYogLPu5Eh-wljLLoAx30qjiJ/preview';">
+                    <img src="pdf1.png" alt="Course Catalog Icon">
+                    <div class="card-content">
+                        <h3>Operating Systems</h3>
+                        <p>Andrew S Tanenbaum</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/14LD2Baib315D9rokjm1oqvef1t5yzqB7/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Operating Systems</h3>
+                        <p>Abraham Silberschats</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1AVk4b5QHOwyoGfG9zfRmZWLObPBjvaBf/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Computer Organization</h3>
+                        <p>M Morris Mano</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1oHDikAZNaPMaGVduCtAKAxXpLvt9uUXu/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Computer Organization</h3>
+                        <p>David A Patterson</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1_K0d1pugt_Mr2O8KLGD4-cXdtGEItO8q/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Theory Of Computation</h3>
+                        <p>PETER LINZ</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1J14-X3_W9CJOUZEiggk-uh9utUNuIcdh/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Theory Of Computation</h3>
+                        <p>RAJEEV MOTWANI</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1zJ0sow2ICTJagUPlgsruvuIQhKr9oCpG/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>C Programming Language</h3>
+                        <p>Dennis Ritchie</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1Xqrlj7lpiixVPy9BY9RHJHEFCQLUe-tf/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Probability</h3>
+                        <p>Sheldon Ross</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1j18L9BJ4k8ygI70y1Nxdt0Aw-tGdFi2V/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Discrete Maths</h3>
+                        <p>Kenneth H. Rosen</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1NK4FPhEc6yPTZRjRgHfnropJB_RAtjXN/preview';">
+                    <img src="pdf1.png" alt="Programs and Resources Icon">
+                    <div class="card-content">
+                        <h3>Discrete Maths</h3>
+                        <p>Ralph P Garimaldi</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1SrvTS9WOcpaAFdPWQMHngNVDWVvnwuVW/preview';">
+                    <img src="pdf1.png" alt="Learning Icon">
+                    <div class="card-content">
+                        <h3>Digital Logic</h3>
+                        <p>Ziv Kohavi</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1-YVdNMuvy-_eH-wx7P1gwsZMO2VdaGLw/preview';">
+                    <img src="pdf1.png" alt="Digital Credentials Icon">
+                    <div class="card-content">
+                        <h3>Digital Logic</h3>
+                        <p>M Morris Mano</p>
+                    </div>
+                </div>
+                <div class="card"onclick="window.location.href='https://drive.google.com/file/d/1SrvTS9WOcpaAFdPWQMHngNVDWVvnwuVW/preview';">
+                    <img src="pdf1.png" alt="Learning Icon">
+                    <div class="card-content">
+                        <h3>Compiler Design</h3>
+                        <p>Monica S Lam</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
